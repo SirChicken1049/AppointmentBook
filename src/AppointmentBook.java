@@ -8,13 +8,34 @@ public class AppointmentBook {
         // A private method? Interesting.
     }
     public int findFreeBlock(int period, int duration) {
-        return 0;
+        int block = 0;
+        for (int i = 0; i < 60; i++)
+            if (isMinuteFree(period, 1)) {
+                block++;
+                if (block == duration) {
+                    return i - duration + 1;
+                }
+                }
+            else block = 0;{
+            return -1;
+        }
     }
     public boolean makeAppointment(int startPeriod, int endPeriod, int duration){
+        for(int i = startPeriod; i <= endPeriod; i++) {
+            int freeBlock = findFreeBlock(i, duration);
+            if(freeBlock > -1) {
+                reserveBlock(i, freeblock, duration);
+                return true
+        }
+        }
         return false;
     }
     public void printPeriod(int period) {
         for(int i = 0; i < schedule[period - 1].length; i++)
             System.out.println(i + " " + schedule[period - 1][1]);
     }
-}
+    public void reserveBlock(int startMinute, int duration, int period) {
+        for(int i = startMinute; i < startMinute + duration; i++)
+            schedule[period - 1][i] = false;
+    }
+    }

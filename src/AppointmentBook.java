@@ -24,9 +24,9 @@ public class AppointmentBook {
         for(int i = startPeriod; i <= endPeriod; i++) {
             int freeBlock = findFreeBlock(i, duration);
             if(freeBlock > -1) {
-                reserveBlock(i, freeblock, duration);
-                return true
-        }
+                reserveBlock(i, freeBlock, duration);
+                return true;
+            }
         }
         return false;
     }

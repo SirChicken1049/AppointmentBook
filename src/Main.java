@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         boolean[][] schedule = new boolean[8][60];
@@ -33,5 +36,17 @@ public class Main {
         System.out.println(b.makeAppointment(3,4,3));
         System.out.println(b.makeAppointment(2,4,30));
         //b.printPeriod(4);
+    }
+    public static int read() throws FileNotFoundException {
+        int meetings = 0;
+        File f  = new File("Schedules.txt");
+        Scanner s = new Scanner(f);
+        String schedule = "";
+        while (s.hasNext()){
+            while (s.hasNextBoolean()) {
+                schedule += s.nextBoolean() + " ";
+            }
+            AppointmentBook a = new AppointmentBook(readSchedule(schedule))
+        }
     }
     }
